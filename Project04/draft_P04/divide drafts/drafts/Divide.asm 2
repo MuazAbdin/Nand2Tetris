@@ -1,0 +1,171 @@
+// File name: ~/sort/Sort.asm
+// author: Muaz Abdeen
+// Usage: set the values in R13 (dividend)
+//        and R14 (divisor)
+//		  * both are strictly positive *
+
+
+//**
+// This program divides R13 by R14 and stores
+// the quotient (R13/R14) in R15.
+// This is an integer division (the remainder
+// is discarded).
+//
+// 	  * Don't change the input registers *
+//*
+
+	// set variables
+	@minusTwo
+	M=0
+	M=M-1
+	M=M-1	// M= 111...110
+
+	@remainder
+	M=0
+
+	@R13
+	D=M
+	@R15
+	M=D 	// R15 <- R13
+
+	@R14
+	D=M
+	@divisor
+	M=D 	// divisor = R14
+
+	// calculate k
+	@k
+	M=0
+ (KLOOP)
+ 	// check 0 < divisor
+ 	@divisor
+ 	D=M
+ 	@RESETDIVISOR
+ 	D,JLE
+
+ 	// check divisor <= dividend
+ 	@divisor
+ 	D=M
+ 	@R13
+ 	D=D-M		// divisor - dividend
+ 	@RESETDIVISOR
+ 	D,JGT 		// if divisor > dividend goto RESETDIVISOR
+
+ 	// shiftleft divisor
+ 	@divisor
+ 	M=M<< 	// divisor <<= 1
+
+ 	// increment k
+ 	@k
+ 	M=M+1 	// k <- k+1
+
+ 	@KLOOP
+ 	0,JMP
+
+ (RESETDIVISOR)
+ 	@R14
+ 	D=M
+ 	@divisor
+ 	M=D
+
+ (DIVISIONLOOP)
+ 	// remainder < 0?
+ 	@remainder
+ 	D=M
+ 	@POS1
+ 	D,JGE
+
+ 	@NEG1
+ 	0,JMP
+
+ (POS1)
+ 	// if R15[15]=1 then (remainder<<) + 1
+ 	@R15
+ 	D=M
+ 	@ADDONE
+ 	D,JLT
+
+ 	@remainder
+ 	M=M<<
+ 	@SUBSTRACT
+ 	0,JMP
+
+ (ADDONE)
+ 	@remainder
+ 	M=M<<
+ 	M=M+1
+
+ (SUBSTRACT)
+ 	D=M 	// D = remainder
+ 	@divisor
+ 	D=D-M
+ 	@remainder
+ 	M=D 		// remainder -= divisor
+
+ 	@STAGE2
+ 	0,JMP
+
+ (NEG1)
+ 	// if R15[15]=1 then (remainder<<) + 1
+ 	@R15
+ 	D=M
+ 	@ADDONE
+ 	D,JLT
+
+ 	@remainder
+ 	M=M<<
+ 	@ADD
+ 	0,JMP
+
+ (ADDONE)
+ 	@remainder
+ 	M=M<<
+ 	M=M+1
+
+ (ADD)
+ 	D=M 	// D = remainder
+ 	@divisor
+ 	D=D+M
+ 	@remainder
+ 	M=D 		// remainder += divisor
+
+ (STAGE2)
+ 	@OR1
+ 	D,JGE
+
+ 	@minusTwo
+ 	D=M
+ 	@R15
+ 	M=M&D
+
+ 	@DECREMENTK
+ 	0,JMP
+
+ (OR1)
+ 	D=1
+ 	@R15
+ 	M=D|M
+
+ (DECREMENTK)
+ 	// decrement k then check (k >= 0)
+ 	@k
+ 	M=M-1
+ 	D=M
+ 	@GETREMAINDER
+ 	D,JLT
+
+ 	@DIVISIONLOOP
+ 	0,JMP
+
+ (GETREMAINDER)
+ 	@remainder
+ 	D=M
+ 	@END
+ 	D,JGE
+
+ 	@divisor
+ 	D=D+M
+ 	@remainder
+ 	M=D
+
+ (END)

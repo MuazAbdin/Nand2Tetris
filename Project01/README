@@ -1,0 +1,32 @@
+muaz.abdeen
+===============================================================================
+Muaz Abdeen, ID 300575297, muaz.abdeen@mail.huji.ac.il
+===============================================================================
+
+                           Project 1 - Boolean Logic
+                           ------------------------- 
+  
+
+Submitted Files
+---------------
+(0)  README 		- This file.
+(1)  And.hdl 		- And logic gate implementation.
+(2)  And16.hdl	 	- And16 logic gate implementation.
+(3)  DMux.hdl 		- DMux logic gate implementation.
+(4)  DMux4Way.hdl 	- DMux4Way logic gate implementation.
+(5)  DMux8Way.hdl 	- DMux8Way logic gate implementation.
+(6)  Mux.hdl 		- Mux logic gate implementation.
+(7)  Mux4Way16.hdl 	- Mux4Way16 logic gate implementation.
+(8)  Mux8Way16.hdl 	- Mux8Way16 logic gate implementation.
+(9)  Mux16.hdl 		- Mux16 logic gate implementation.
+(10) Not.hdl 		- Not logic gate implementation.
+(11) Not16.hdl		- Not16 logic gate implementation.
+(12) Or.hdl 		- Or logic gate implementation.
+(13) Or8Way.hdl 	- Or8Way logic gate implementation.
+(14) Or16.hdl 		- Or16 logic gate implementation.
+(15) Xor.hdl 		- Xor logic gate implementation.
+
+
+Remarks
+-------
+* ...

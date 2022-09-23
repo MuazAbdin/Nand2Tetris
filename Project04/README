@@ -1,0 +1,22 @@
+muaz.abdeen
+===============================================================================
+Muaz Abdeen, ID 300575297, muaz.abdeen@mail.huji.ac.il
+===============================================================================
+
+                           Project 4 - Machine Language
+                           ---------------------------- 
+  
+
+Submitted Files
+---------------
+(1)  README 		- This file.
+(2)  Mult.asm		- The Mult.asm implementation.
+(3)  Fill.asm		- The Fill.asm implementation.
+(4)  Sort.asm		- The Sort.asm implementation.
+(5)  Divide.asm		- The Divide.asm implementation.
+
+
+Remarks
+-------
+* In Mult.asm I used an algorithm that does not change the value stored 
+  in R1 (I prefered not to use R0 nor R1 as loop counter).

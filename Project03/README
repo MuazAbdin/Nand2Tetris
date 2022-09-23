@@ -1,0 +1,26 @@
+muaz.abdeen
+===============================================================================
+Muaz Abdeen, ID 300575297, muaz.abdeen@mail.huji.ac.il
+===============================================================================
+
+                           Project 3 - Sequential Logic
+                           ---------------------------- 
+  
+
+Submitted Files
+---------------
+(1)  README 			- This file.
+(2)  Bit.hdl			- The 1-bit register implementation.
+(3)  Register.hdl		- The 16-bit register implementation.
+(4)  RAM8.hdl			- The 8-register RAM implementation.
+(5)  RAM64.hdl			- The RAM64 implementation.
+(6)  RAM512.hdl			- The RAM512 implementation.
+(7)  RAM4K.hdl			- The RAM4K implementation.
+(8)  RAM16K.hdl			- The RAM16K implementation.
+(9)  PC.hdl			- The implementation of the counter.
+
+
+
+Remarks
+-------
+* ...

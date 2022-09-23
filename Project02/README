@@ -1,0 +1,36 @@
+muaz.abdeen
+===============================================================================
+Muaz Abdeen, ID 300575297, muaz.abdeen@mail.huji.ac.il
+===============================================================================
+
+                           Project 2 - Boolean Arithmetic
+                           ------------------------------ 
+  
+
+Submitted Files
+---------------
+(1)  README 			- This file.
+(2)  HalfAdder.hdl		- The HalfAdder gate implementation.
+(3)  FullAdder.hdl		- The FullfAdder gate implementation.
+(4)  Add16.hdl			- The Add16 gate implementation.
+(5)  Inc16.hdl			- The Inc16 gate implementation.
+(6)  ALU.hdl			- The implementation of the ALU.
+(7)  ShiftLeft.hdl		- The ShiftLeft gate implementation.
+(8)  ShiftRight.hdl		- The ShiftRight gate implementation.
+(9)  Mul.hdl			- The Mul gate implementation.
+(10) LogicalShiftLeft.hdl	- A supplementary chip in order to ease the building of the
+				  the multiplication chip (Mul.hdl).
+				  It is a 16-bit value logical left shift.
+ 				  It moves every input bit one position to the left, include 
+				  the sign bit (the sign might change).
+ 				  The "new" right-most bit should be 0.
+
+
+
+Remarks
+-------
+* In HalfAdder.hdl I reimplement Xor gate, in order to reuse the first Nand gate in the Not gate.
+  In the less efficient implementation we can use Xor and And gates which costs (6 Nands), so I negated
+  the first Nand gate, and saved a Nand gate (And == 2 Nands).
+* In FullAdder.hdl it is more efficient if not reusing Half Adder, but using Nands only (9 Nands).
+* In Inc16.hdl I exploit the advantage of automatic size fitting of a multi-bit bus.  

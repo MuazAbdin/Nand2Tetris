@@ -1,0 +1,23 @@
+muaz.abdeen
+===============================================================================
+Muaz Abdeen, ID 300575297, muaz.abdeen@mail.huji.ac.il
+===============================================================================
+
+                           Project 6 - Assembler
+                           --------------------- 
+  
+
+Submitted Files
+---------------
+(1)  README 		- This file.
+(2)  Parser.py		- The Parser module implementation.
+(3)  Code.py		- The Code module implementation.
+(4)  SymbolTable.py	- The Symbol Table implementation.
+(5)  Main.py		- The Assembler implementation.
+(6)  Assembler		- The run file.
+(7)  Makefile		- The MakeFile.
+
+
+Remarks
+-------
+* ... 

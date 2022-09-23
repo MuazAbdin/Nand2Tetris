@@ -1,0 +1,51 @@
+/**
+* The inputs of the extends ALU is instruction[9], x[16] and y[16].
+* The output is define as follows:
+* 1. If instruction[7..8]=1,1 the output is identical to the regular
+* ALU, where instruction[5]=zx, instruction[4]=nx, ..., instruction[0]=no.
+*
+* 2. Else, if instruction[7]=0 the output will be x*y. Disregard the rest
+* of the instruction.
+*
+* 3. Else, if instruction[8]=0 the output will be a shift.
+*    If instruction[4]=0 shift y, otherwise shift x, moreover if 
+*    instruction[5]=0 return a right shift, otherwise left shift.
+*
+* instruction[6] is unused.
+* The ng and zr pins behave the same as in the regular ALU.
+**/
+
+
+CHIP ExtendAlu{
+     IN x[16],y[16],instruction[9];
+     OUT out[16],zr,ng;
+     
+     PARTS:
+     // Regular ALU result
+     ALU(x=x ,y=y ,zx=instruction[5] ,nx=instruction[4] ,zy=instruction[3] ,ny=instruction[2] ,f=instruction[1] ,no=instruction[0] ,out=ALUout ,zr=ALUzr ,ng=ALUng);
+
+     // Multiplication
+     Mul(a=x ,b=y ,out=product);
+
+     // Shift Y
+     ShiftRight(in=y ,out=RShiftY);
+     ShiftLeft(in=y ,out=LShiftY);
+
+     // Shift X
+     ShiftRight(in=x ,out=RShiftX);
+     ShiftLeft(in=x ,out=LShiftX);
+
+	 // select the shift output
+	 Mux4Way16(a=RShiftY ,b=RShiftX ,c=LShiftY ,d=LShiftX ,sel=instruction[4..5] ,out=shifted);
+
+	 // select the final output, and determine if (out < 0)
+     Mux16(a=product ,b=ALUout ,sel=instruction[7] ,out=result);
+     Mux16(a=shifted ,b=result ,sel=instruction[8] ,out[15]=ng ,out[0..7]=temp1, out[8..15]=temp2 ,out=out);
+
+	 // determine if (out == 0)
+	 Or8Way(in=temp1 ,out=zrRes1);
+	 Or8Way(in=temp2 ,out=zrRes2);
+	 Or(a=zrRes1 ,b=zrRes2, out=Notzr);
+	 Not(in=Notzr ,out=zr);
+        
+}

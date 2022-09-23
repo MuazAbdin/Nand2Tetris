@@ -1,0 +1,67 @@
+// This file is part of course: "Workshop In Computer
+// Construction: From Nand to Tetris" by HUJI.
+// File name: projects/02/Mul.hdl
+
+/**
+ * This chip multiplies 2 numbers.
+ * Handling overflows: any number larger than 16 bits can
+ * be truncated to include only the 16 least significant bits.
+ */
+
+CHIP Mul{
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+
+    // calculating the partial products (16 products like number of bits)
+    Mux16(a=false ,b=a ,sel=b[0] ,out=part0);           // 1st partial product
+    LogicalShiftLeft(in=a ,out=shift1);
+    Mux16(a=false ,b=shift1 ,sel=b[1] ,out=part1);      // 2nd partial product
+    LogicalShiftLeft(in=shift1 ,out=shift2);
+    Mux16(a=false ,b=shift2 ,sel=b[2] ,out=part2);      // 3rd partial product
+    LogicalShiftLeft(in=shift2 ,out=shift3);
+    Mux16(a=false ,b=shift3 ,sel=b[3] ,out=part3);      // 4th partial product
+    LogicalShiftLeft(in=shift3 ,out=shift4);
+    Mux16(a=false ,b=shift4 ,sel=b[4] ,out=part4);      // 5th partial product
+    LogicalShiftLeft(in=shift4 ,out=shift5);
+    Mux16(a=false ,b=shift5 ,sel=b[5] ,out=part5);      // 6th partial product
+    LogicalShiftLeft(in=shift5 ,out=shift6);
+    Mux16(a=false ,b=shift6 ,sel=b[6] ,out=part6);      // 7th partial product
+    LogicalShiftLeft(in=shift6 ,out=shift7);
+    Mux16(a=false ,b=shift7 ,sel=b[7] ,out=part7);      // 8th partial product
+    LogicalShiftLeft(in=shift7 ,out=shift8);
+    Mux16(a=false ,b=shift8 ,sel=b[8] ,out=part8);      // 9th partial product
+    LogicalShiftLeft(in=shift8 ,out=shift9);
+    Mux16(a=false ,b=shift9 ,sel=b[9] ,out=part9);      // 10th partial product
+    LogicalShiftLeft(in=shift9 ,out=shift10);
+    Mux16(a=false ,b=shift10 ,sel=b[10] ,out=part10);   // 11th partial product
+    LogicalShiftLeft(in=shift10 ,out=shift11);
+    Mux16(a=false ,b=shift11 ,sel=b[11] ,out=part11);   // 12th partial product
+    LogicalShiftLeft(in=shift11 ,out=shift12);
+    Mux16(a=false ,b=shift12 ,sel=b[12] ,out=part12);   // 13th partial product
+    LogicalShiftLeft(in=shift12 ,out=shift13);
+    Mux16(a=false ,b=shift13 ,sel=b[13] ,out=part13);   // 14th partial product
+    LogicalShiftLeft(in=shift13 ,out=shift14);
+    Mux16(a=false ,b=shift14 ,sel=b[14] ,out=part14);   // 15th partial product
+    LogicalShiftLeft(in=shift14 ,out=shift15);
+    Mux16(a=false ,b=shift15 ,sel=b[15] ,out=part15);   // 16th partial product
+
+    // Sum the patrial products
+    Add16(a=part0 ,b=part1, out=res0);
+    Add16(a=res0 ,b=part2, out=res1);
+    Add16(a=res1 ,b=part3, out=res2);
+    Add16(a=res2 ,b=part4, out=res3);
+    Add16(a=res3 ,b=part5, out=res4);
+    Add16(a=res4 ,b=part6, out=res5);
+    Add16(a=res5 ,b=part7, out=res6);
+    Add16(a=res6 ,b=part8, out=res7);
+    Add16(a=res7 ,b=part9, out=res8);
+    Add16(a=res8 ,b=part10, out=res9);
+    Add16(a=res9 ,b=part11, out=res10);
+    Add16(a=res10 ,b=part12, out=res11);
+    Add16(a=res11 ,b=part13, out=res12);
+    Add16(a=res12 ,b=part14, out=res13);
+    Add16(a=res13 ,b=part15, out=out);
+
+}

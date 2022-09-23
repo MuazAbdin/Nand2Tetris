@@ -1,0 +1,37 @@
+/** the main class of the programe */
+class Main {
+	function void main() {
+		var Gun gun;
+		var Target target;
+        var int speed;
+		var boolean running;
+
+		let running = true;
+		let gun = Gun.new(6);
+
+		while (running) {
+			do gun.move();
+			do gun.fire();
+
+		}
+
+
+
+
+		// var boolean f;
+
+		
+
+		
+
+		
+		// let f = true;
+		// while(f) {
+			
+		// 	do gun.fire();
+		// 	do gun.fire();
+		// }
+
+		return;
+	}
+}

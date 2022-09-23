@@ -1,0 +1,26 @@
+muaz.abdeen
+===============================================================================
+Muaz Abdeen, ID 300575297, muaz.abdeen@mail.huji.ac.il
+===============================================================================
+
+                           Project 12 - The Operating System
+                           ----------------------------------
+  
+
+Submitted Files
+---------------
+(1)  README 		    	- This file.
+(2)  Array.jack             - Represents an array.
+(3)  Keyboard.jack          - Handling user input from the keyboard.
+(4)  Math.jack              - A basic math library.
+(5)  Memory.jack            - Memory operations library.
+(6)  Output.jack            - Handles writing characters to the screen.
+(7)  Screen.jack            - Graphic screen library.
+(8)  String.jack            - Represents a String object.
+(9)  Sys.jack               - A library of basic system services.
+
+
+Remarks
+-------
+* ... 
+

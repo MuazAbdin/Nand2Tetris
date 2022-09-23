@@ -1,0 +1,53 @@
+class Shot {
+	/**************/
+    /* Attributes */
+    /**************/
+
+	field int speed;
+    field int xCoord, yCoord;
+
+    /***************/
+    /* Constructor */
+    /***************/
+    constructor Shot new(int y, int Aspeed) {
+        let xCoord = 180;
+        let yCoord = y;
+        let speed = Aspeed;
+        return this;
+    }
+
+    /***********/
+    /* Methods */
+    /***********/
+
+    method void draw() {
+	    do Screen.drawCircle((xCoord),yCoord,5);
+	    return;
+    }
+
+    method void move() { 
+        do Screen.setColor(true);
+        do draw();
+        // if (xCoord < (400 - 32 - speed)) {
+        //     do Screen.setColor(false);
+        //     do draw();
+        //     let xCoord = xCoord + speed;
+        //     do Screen.setColor(true);
+        //     do draw();
+        // }
+        return;
+    }
+    
+    method void vanish() {
+        do Screen.setColor(false);
+        do draw();
+        do dispose();
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+	
+}

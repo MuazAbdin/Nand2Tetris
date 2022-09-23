@@ -1,0 +1,113 @@
+/** Represents the gun */
+class Gun {
+    /**************/
+    /* Attributes */
+    /**************/
+
+    field int yCoord;
+    field Shot shot;
+    field int speed;
+
+    /***************/
+    /* Constructor */
+    /***************/
+    constructor Gun new(int Aspeed) {
+        // let xCoord = 80;
+        let yCoord = 0;
+        let speed = Aspeed;
+        let shot = Shot.new(yCoord+104, speed);
+        do draw(0);
+        return this;
+    }
+
+    /***********/
+    /* Methods */
+    /***********/
+
+    /* Drawing the gun */
+    method void draw(int y) {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(8,112+y,79,128+y);
+        do Screen.drawRectangle(16,104+y,23,111+y);
+        do Screen.drawRectangle(11,128+y,31,159+y);
+        do Screen.drawRectangle(72,104+y,79,111+y);
+        do Screen.drawRectangle(36,128+y,39,135+y);
+        do Screen.drawRectangle(44,128+y,47,143+y);
+        do Screen.drawRectangle(32,140+y,43,143+y);
+        // do dispose()
+        return;
+    }
+
+    /* Erasing the gun */
+    method void erase(int y) {
+        do Screen.setColor(false);
+        do Screen.drawRectangle(8,112+y,79,128+y);
+        do Screen.drawRectangle(16,104+y,23,111+y);
+        do Screen.drawRectangle(11,128+y,31,159+y);
+        do Screen.drawRectangle(72,104+y,79,111+y);
+        do Screen.drawRectangle(36,128+y,39,135+y);
+        do Screen.drawRectangle(44,128+y,47,143+y);
+        do Screen.drawRectangle(32,140+y,43,143+y);
+        // do dispose()
+        return;
+    }
+
+    /* moving the gun up and down */
+    method void move() {
+        var boolean down, flag;
+        let down = true;
+        let flag = true;
+        while (flag) {
+            if (yCoord < 70 & (down)) {
+                do moveDown();
+            }
+            if (~(yCoord < 70)) {
+                let down = false;
+            }
+            if (yCoord > -70 & ~(down)) {
+                do moveUp();
+            }
+            if (~(yCoord > -70)) {
+                let down = true;
+            }
+        }
+        return;
+    }
+
+    method void moveDown() {
+        do erase(yCoord);
+        let yCoord = yCoord + 2;
+        do draw(yCoord);
+        do Sys.wait(30);
+        return;
+    }
+
+    method void moveUp() {
+        do erase(yCoord);
+        let yCoord = yCoord - 2;
+        do draw(yCoord);
+        do Sys.wait(30);
+        return;
+    }
+
+    method void fire() {
+        do shot.move();
+        return;
+    }
+
+    method void vanish() {
+        do shot.vanish();
+        do dispose();
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+    
+
+    /*************/
+    /* Functions */
+    /*************/
+}
